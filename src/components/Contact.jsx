@@ -14,23 +14,20 @@ const Contact = () => {
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData,
+      body: formData
     });
 
     const data = await response.json();
 
     if (data.success) {
-      setResult("");
-      // alert("Form Submitted Successfully");
-      toast.success("Form Submitted Successfully");
+      setResult("Form Submitted Successfully");
       event.target.reset();
     } else {
       console.log("Error", data);
-      // alert(data.message)
-      toast.error(data.message);
-      setResult("");
+      setResult(data.message);
     }
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -200 }}
